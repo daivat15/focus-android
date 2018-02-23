@@ -149,7 +149,9 @@ android {
         // WebView
         ////////////////////////////////////////////////////////////////////////////////////////////
 
-        // Release
+        androidTest {
+            res.srcDir('src/androidTest/assets')
+        }
 
         focusWebviewUniversalRelease {
             java.srcDir 'src/focusRelease/java'
@@ -181,6 +183,11 @@ android {
         klarWebviewDebug {
             res.srcDir 'src/klarDebug/res'
         }
+
+        androidTestWebviewCompile {
+            java.srcDirs += ['src/androidTestWebview/java']
+        }
+
 
         ////////////////////////////////////////////////////////////////////////////////////////////
         // Gecko
@@ -271,6 +278,10 @@ android {
 
         klarGeckoAarch64Debug {
             res.srcDir 'src/klarDebug/res'
+        }
+
+        androidTestGeckoCompile {
+            java.srcDirs += ['src/androidTestGecko/java']
         }
     }
 }
