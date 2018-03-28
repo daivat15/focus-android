@@ -184,22 +184,14 @@ public class WebViewDataTest {
         TestHelper.inlineAutocompleteEditText.setText(webServer.url(TEST_PATH).toString());
         TestHelper.hint.waitForExists(waitingTime);
         TestHelper.pressEnterKey();
-        if (TestHelper.getAppName().contains("webview")) {
-            Assert.assertTrue(TestHelper.webView.waitForExists(waitingTime));
-        } else {
-            Assert.assertTrue(TestHelper.geckoView.waitForExists(waitingTime));
-        }
+        Assert.assertTrue(TestHelper.webView.waitForExists(waitingTime));
 
         // Assert website is loaded
-        if (TestHelper.getAppName().contains("webview")) {
-            final UiObject titleMsg = TestHelper.mDevice.findObject(new UiSelector()
-                    .description("focus test page")
-                    .enabled(true));
-            titleMsg.waitForExists(waitingTime);
-            assertTrue("Website title loaded", titleMsg.exists());
-        } else {
-            Assert.assertTrue(TestHelper.geckoView.waitForExists(waitingTime));
-        }
+        final UiObject titleMsg = TestHelper.mDevice.findObject(new UiSelector()
+                .description("focus test page")
+                .enabled(true));
+        titleMsg.waitForExists(waitingTime);
+        assertTrue("Website title loaded", titleMsg.exists());
 
         // Assert cookie is saved
 
